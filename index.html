@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Examples using Leaflet Level Picker</title>
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="leaflet.levelpicker.css"/>
+    <style>
+
+        .map{
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <script src="leaflet.levelpicker.js"></script>
+    <script>
+        var mapboxUrl= 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+        var coordinates = [39.2833, -76.6167];
+        var levels = [
+            {floor:'1', floorid: '001-1'},
+            {floor:'2', floorid: '001-2'},
+            {floor:'3', floorid: '001-3'}
+        ];
+    </script>
+</head>
+<body>
+    <div>
+        <header>Default</header>
+        <div id="defaultMap"></div>
+        <script>
+            /** DEFAULT MAP **/
+            var defaultMap = L.map('defaultMap', {
+                center: coordinates,
+                zoom: 17,
+                layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                zoomControl: false,
+                dragging: true
+            });
+
+            new L.Control.LevelPicker({levels:levels }).addTo(defaultMap);
+
+            defaultMap.on('level.change', function(e) {
+                alert('Change to Level ' + e.level);
+            });
+        </script>
+    </div>
+    <div>
+        <header>Change Position</header>
+        <div id="positionMap"></div>
+        <script>
+            /** DEFAULT MAP **/
+            var defaultMap = L.map('positionMap', {
+                center: coordinates,
+                zoom: 17,
+                layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                zoomControl: false,
+                dragging: true
+            });
+
+            new L.Control.LevelPicker({levels:levels, position: 'bottomleft'}).addTo(defaultMap);
+        </script>
+    </div>
+    <div>
+        <header>Change Button Name</header>
+        <div id="buttonNameMap"></div>
+        <script>
+            /** DEFAULT MAP **/
+            var defaultMap = L.map('buttonNameMap', {
+                center: coordinates,
+                zoom: 17,
+                layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                zoomControl: false,
+                dragging: true
+            });
+
+            new L.Control.LevelPicker({levels:levels, levelUpText: 'Up', levelDownText: 'Down'}).addTo(defaultMap);
+        </script>
+    </div>
+
+
+</body>
+</html>
