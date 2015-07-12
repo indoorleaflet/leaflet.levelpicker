@@ -1,6 +1,6 @@
 # leaflet.levelpicker
 
-A level picker for leaflet.
+A level picker for leaflet. You can view some examples on the [github pages page](http://bmoregeo.github.io/leaflet.levelpicker/index.html).
 
 ## Getting Started
 ### On the server
