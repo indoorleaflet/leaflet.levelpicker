@@ -1,0 +1,38 @@
+{
+  "name": "leaflet.levelpicker",
+  "description": "A level picker for leaflet.",
+  "version": "0.1.1",
+  "homepage": "https://github.com/bmoregeo/leaflet.levelpicker",
+  "author": {
+    "name": "Christopher Fricke",
+    "email": "christopher.fricke@bmoregeo.com",
+    "url": "http://bmoregeo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmoregeo/leaflet.levelpicker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bmoregeo/leaflet.levelpicker/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bmoregeo/leaflet.levelpicker/blob/master/LICENSE"
+    }
+  ],
+  "main": "lib/leaflet.levelpicker",
+  "scripts": {},
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt-contrib-cssmin": "~0.12.3",
+    "grunt-bump": "~0.3.1",
+    "grunt": "~0.4.5",
+    "leaflet": "~0.7.3"
+  },
+  "keywords": []
+}
