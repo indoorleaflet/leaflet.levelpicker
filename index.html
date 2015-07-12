@@ -16,44 +16,47 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
     <script src="src/leaflet.levelpicker.js"></script>
     <script>
+        var zoom = 15;
         var mapboxUrl= 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
         var coordinates = [39.2833, -76.6167];
         var levels = [
-            {floor:'1', floorid: '001-1'},
-            {floor:'2', floorid: '001-2'},
-            {floor:'3', floorid: '001-3'}
+            {level:'1', levelid: '001-1'},
+            {level:'2', levelid: '001-2'},
+            {level:'3', levelid: '001-3'}
         ];
     </script>
 </head>
 <body>
     <div>
-        <header>Default</header>
+        <header><h1>Default</h1></header>
         <div id="defaultMap" class="map"></div>
         <script>
-            /** DEFAULT MAP **/
+            /** Default Map **/
             var defaultMap = L.map('defaultMap', {
                 center: coordinates,
-                zoom: 17,
+                zoom: zoom,
                 layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
                 zoomControl: false,
                 dragging: true
             });
 
-            new L.Control.LevelPicker({levels:levels }).addTo(defaultMap);
+            new L.Control.LevelPicker({levels:levels}).addTo(defaultMap);
 
             defaultMap.on('level.change', function(e) {
                 alert('Change to Level ' + e.level);
             });
+
+            console.log(levels)
         </script>
     </div>
     <div>
-        <header>Change Position</header>
+        <header><h1>Change Position</h1></header>
         <div id="positionMap" class="map"></div>
         <script>
-            /** DEFAULT MAP **/
+            /** Change Position of Controller **/
             var defaultMap = L.map('positionMap', {
                 center: coordinates,
-                zoom: 17,
+                zoom: zoom,
                 layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
                 zoomControl: false,
                 dragging: true
@@ -63,10 +66,10 @@
         </script>
     </div>
     <div>
-        <header>Change Button Name</header>
+        <header><h1>Change Button Name</h1></header>
         <div id="buttonNameMap" class="map"></div>
         <script>
-            /** DEFAULT MAP **/
+            /** Change Button Text on Controller **/
             var defaultMap = L.map('buttonNameMap', {
                 center: coordinates,
                 zoom: 17,
