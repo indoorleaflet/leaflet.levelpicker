@@ -15,6 +15,8 @@ Download the [production version][min] or the [development version][max].
 In your web page:
 
 ```html
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="dist/leaflet.levelpicker.min.js"></script>
 <script>
     var mapboxUrl= 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
