@@ -1,0 +1,24 @@
+{
+  "name": "leaflet.levelpicker",
+  "version": "0.1.7",
+  "homepage": "https://github.com/bmoregeo/leaflet.levelpicker",
+  "authors": [
+    "christopher fricke <christopher.a.fricke@gmail.com>"
+  ],
+  "description": "A level selector plugin for leaflet",
+  "main": "leaflet.levelpicker.js",
+  "keywords": [
+    "leaflet",
+    "level",
+    "building",
+    "floor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
