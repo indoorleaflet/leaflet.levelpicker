@@ -71,9 +71,17 @@ module.exports = function(grunt) {
         push: false
       }
     },
+    copy: {
+      'gh-pages': {
+        files: [
+          {expand: true, src: ['src/**'], dest: 'examples/'}
+        ]
+      }
+    },
     'gh-pages': {
       options: {
-        base: 'examples'
+        base: 'examples',
+        repo: 'https://' + process.env.GH_TOKEN + '@github.com/bmoregeo/leaflet.levelpicker.git'
       },
       src: '**/*'
     },
@@ -95,10 +103,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-bump');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat', 'cssmin', 'uglify', 'bump']);
-  grunt.registerTask('gh-pages', ['gh-pages'])
+  grunt.registerTask('ghpages', ['copy:gh-pages', 'gh-pages'])
 };
