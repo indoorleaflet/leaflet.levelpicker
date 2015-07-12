@@ -30,6 +30,21 @@
     <div>
         <header><h1>Default</h1></header>
         <div id="defaultMap" class="map"></div>
+        <code>
+            var defaultMap = L.map('defaultMap', {
+                center: coordinates,
+                zoom: zoom,
+                layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                zoomControl: false,
+                dragging: true
+            });
+
+            new L.Control.LevelPicker({levels:levels}).addTo(defaultMap);
+
+            defaultMap.on('level.change', function(e) {
+                alert('Change to Level ' + e.level);
+            });
+        </code>
         <script>
             /** Default Map **/
             var defaultMap = L.map('defaultMap', {
@@ -45,13 +60,22 @@
             defaultMap.on('level.change', function(e) {
                 alert('Change to Level ' + e.level);
             });
-
-            console.log(levels)
         </script>
     </div>
     <div>
         <header><h1>Change Position</h1></header>
         <div id="positionMap" class="map"></div>
+        <code>
+            var defaultMap = L.map('positionMap', {
+                center: coordinates,
+                zoom: zoom,
+                layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                zoomControl: false,
+                dragging: true
+            });
+
+            new L.Control.LevelPicker({levels:levels, position: 'bottomleft'}).addTo(defaultMap);
+        </code>
         <script>
             /** Change Position of Controller **/
             var defaultMap = L.map('positionMap', {
