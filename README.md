@@ -3,8 +3,6 @@
 A level picker for leaflet. You can view some examples on the [github pages page](http://bmoregeo.github.io/leaflet.levelpicker/index.html).
 
 ## Getting Started
-### On the server
-Install the module with: `npm install leaflet.levelpicker`
 
 ### In the browser
 Download the [production version][min] or the [development version][max].
@@ -75,7 +73,7 @@ self.map.on('level.change', function(e) {console.log(e.level)});
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-_Also, please don't edit files in the "dist" subdirectory as they are generated via Grunt. You'll find source code in the "lib" subdirectory!_
+_Also, please don't edit files in the "dist" subdirectory as they are generated via Grunt. You'll find source code in the "src" subdirectory!_
 
 ## Release History
 _(Nothing yet)_
