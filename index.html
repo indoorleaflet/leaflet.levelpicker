@@ -65,7 +65,7 @@
 new L.Control.LevelPicker({levels:levels}).addTo(defaultMap);
 
 defaultMap.on('level.change', function(e) {
-    alert('Change to Level ' + e.level);
+    alert('Change to Level ' + e.target.level);
 });</code></pre>
                 </div>
                 <div id="defaultMap" class="map col-md-6"></div>
@@ -82,7 +82,9 @@ defaultMap.on('level.change', function(e) {
                     new L.Control.LevelPicker({levels:levels}).addTo(defaultMap);
 
                     defaultMap.on('level.change', function(e) {
-                        alert('Change to Level ' + e.level);
+                        alert('Change to Level ' + e.target.level);
+                        console.log(e);
+
                     });
                 </script>
             </div>
@@ -103,7 +105,7 @@ defaultMap.on('level.change', function(e) {
 new L.Control.LevelPicker({levels:levels, position: 'bottomleft'}).addTo(defaultMap);
 
 defaultMap.on('level.change', function(e) {
-    alert('Change to Level ' + e.level);
+    alert('Change to Level ' + e.target.level);
 });</code></pre>
                 </div>
                 <div id="positionMap" class="map col-md-6"></div>
@@ -120,7 +122,7 @@ defaultMap.on('level.change', function(e) {
                     new L.Control.LevelPicker({levels:levels, position: 'bottomleft'}).addTo(defaultMap);
 
                     defaultMap.on('level.change', function(e) {
-                        alert('Change to Level ' + e.level);
+                        alert('Change to Level ' + e.target.level);
                     });
                 </script>
             </div>
@@ -141,7 +143,7 @@ defaultMap.on('level.change', function(e) {
 new L.Control.LevelPicker({levels:levels, levelUpText: 'U', levelDownText: 'D'}).addTo(defaultMap);
 
 defaultMap.on('level.change', function(e) {
-    alert('Change to Level ' + e.level);
+    alert('Change to Level ' + e.target.level);
 });</code></pre>
                 </div>
                 <div id="buttonNameMap" class="map col-md-6"></div>
@@ -158,7 +160,7 @@ defaultMap.on('level.change', function(e) {
                     new L.Control.LevelPicker({levels:levels, levelUpText: 'U', levelDownText: 'D'}).addTo(defaultMap);
 
                     defaultMap.on('level.change', function(e) {
-                        alert('Change to Level ' + e.level);
+                        alert('Change to Level ' + e.target.level);
                     });
                 </script>
             </div>
