@@ -4,7 +4,7 @@
 
 L.Control.LevelPicker = L.Control.extend({
     options: {
-        position: 'bottomright',
+        position: 'topright',
         levelUpText: '+',
         levelDownText: '-'
     },
@@ -53,7 +53,7 @@ L.Control.LevelPicker = L.Control.extend({
         this.updateSelectedLevelInfo();
     },
     updateSelectedLevelInfo: function () {
-        this.levelInfo.innerHTML = this.options.levels[this._map.level].floor;
+        this.levelInfo.innerHTML = this.options.levels[this._map.level].level;
 
         this._map.fireEvent('level.change', this._map.level);
     }

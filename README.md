@@ -16,6 +16,8 @@ In your web page:
 
 ```html
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+<script src="dist/leaflet.levelpicker.min.js"></script>
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="dist/leaflet.levelpicker.min.js"></script>
 <script>
@@ -42,10 +44,32 @@ In your web page:
 ```
 
 ## Documentation
-_(Coming soon)_
+This is a level picker plugin for leaflet. It is used to flip between an ordered list of level objects. As an example,
+you could create a base map for each level of a building.
 
-## Examples
-_(Coming soon)_
+### Input Options
+
+* levels: This is a required parameter for the controller. This should be an array of floor/level objects. The level
+attribute is displayed in the controller. Additional parameters are optional.
+```
+var levels = [
+        {level:'1', levelid: '001-1'},
+        {level:'2', levelid: '001-2'},
+        {level:'3', levelid: '001-3'}
+    ];
+```
+
+* position (optional): Follows standard leaflet position option. Defaults to topright.
+* levelUpText (optional): The text set on the level up button. Defaults to +.
+* levelDownText (optional): The text set on the level down button. Defaults to -.
+
+### Events
+This plugin casts the level.change event when the level is changed within the control.  You can access this level
+change event using the following code.
+
+```
+self.map.on('level.change', function(e) {console.log(e.level)});
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
