@@ -71,6 +71,12 @@ module.exports = function(grunt) {
         push: false
       }
     },
+    'gh-pages': {
+      options: {
+        base: 'examples'
+      },
+      src: '**/*'
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -94,4 +100,5 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat', 'cssmin', 'uglify', 'bump']);
+  grunt.registerTask('gh-pages', ['gh-pages'])
 };

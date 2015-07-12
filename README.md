@@ -50,7 +50,8 @@ you could create a base map for each level of a building.
 ### Input Options
 
 * levels: This is a required parameter for the controller. This should be an array of floor/level objects. The level
-attribute is displayed in the controller. Additional parameters are optional.
+attribute is displayed in the controller. Additional attributes  are optional. The level objects should be in the order
+of the building. (ie. [{"level": "B1"}, {"level": "1"}, {"level": "M1"}, {"level": "2"}])
 ```
 var levels = [
         {level:'1', levelid: '001-1'},
