@@ -1,4 +1,4 @@
-/*! leaflet.levelpicker - v0.1.5 - 2015-07-12
+/*! leaflet.levelpicker - v0.1.6 - 2015-07-12
 * https://github.com/bmoregeo/leaflet.levelpicker
 * Copyright (c) 2015 Christopher Fricke; Licensed MIT */
 L.Control.LevelPicker = L.Control.extend({

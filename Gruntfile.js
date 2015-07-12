@@ -110,5 +110,5 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat', 'cssmin', 'uglify', 'bump']);
-  grunt.registerTask('ghpages', ['copy:gh-pages', 'gh-pages'])
+  grunt.registerTask('ghpages', ['copy:gh-pages', 'gh-pages']);
 };
