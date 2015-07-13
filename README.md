@@ -81,3 +81,4 @@ _(Nothing yet)_
 ## License
 Copyright (c) 2015 Christopher Fricke  
 Licensed under the MIT license.
+[![Analytics](https://ga-beacon.appspot.com/UA-9239392-5/leaflet.levelpicker/readme)](https://github.com/igrigorik/ga-beacon)
