@@ -4,6 +4,35 @@
     text-indent: 1px;
 }
 
+.level-picker a{
+
+    -webkit-box-shadow: inset 1px -5px 10px 0 #FFF;
+    -moz-box-shadow: inset 1px -5px 10px 0 #FFF;
+    box-shadow: inset 1px -5px 10px 0 #FFF;
+}
+.level-picker a.level-picker-level-info:hover{
+    background:#FFF;
+}
+.level-picker a.level-picker-level-info.enable-level-list:hover{
+    background:#FFF;
+}
+
+.level-list-button.selected,
+.level-picker-level-info.selected{
+    background:#E5E5E5;
+    -webkit-box-shadow: inset 1px -5px 10px 0 #EEE;
+    -moz-box-shadow: inset 1px -5px 10px 0 #EEE;
+    box-shadow: inset 1px -5px 10px 0 #EEE;
+}
+.level-list-button.selected:hover,
+.level-picker-level-info.selected:hover{
+    background:#D5D5D5;
+    -webkit-box-shadow: inset 1px -5px 10px 0 #DDDDDD;
+    -moz-box-shadow: inset 1px -5px 10px 0 #DDDDDD;
+    box-shadow: inset 1px -5px 10px 0 #DDDDDD;
+}
+
+/** Level List **/
 .level-list{
     position:absolute;
     display:none;
@@ -23,6 +52,7 @@
     overflow: auto;
 }
 
+/** Position the Level List Popup **/
 .leaflet-right .level-list{
     right:30px;
 }
@@ -34,44 +64,4 @@
 }
 .leaflet-bottom .level-list{
     bottom:0;
-}
-
-.level-picker a{
-    -webkit-box-shadow: inset 1px -5px 10px 0 #FFF;
-    -moz-box-shadow: inset 1px -5px 10px 0 #FFF;
-    box-shadow: inset 1px -5px 10px 0 #FFF;
-}
-.level-picker div.arrows{
-    background:#EEE;
-    -webkit-box-shadow: inset 1px -5px 10px 0 #DFDFDF;
-    -moz-box-shadow: inset 1px -5px 10px 0 #DFDFDF;
-    box-shadow: inset 1px -5px 10px 0 #DFDFDF;
-    padding:2px 5px;
-}
-.top-arrow-button{
-    width:16px;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid #888;
-}
-.bottom-arrow-button{
-    width:16px;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid #888;
-}
-
-.level-list-button.selected,
-.level-picker-level-info.selected{
-    background:#E5E5E5;
-    -webkit-box-shadow: inset 1px -5px 10px 0 #EEE;
-    -moz-box-shadow: inset 1px -5px 10px 0 #EEE;
-    box-shadow: inset 1px -5px 10px 0 #EEE;
-}
-.level-list-button.selected:hover,
-.level-picker-level-info.selected:hover{
-    background:#D5D5D5;
-    -webkit-box-shadow: inset 1px -5px 10px 0 #DDDDDD;
-    -moz-box-shadow: inset 1px -5px 10px 0 #DDDDDD;
-    box-shadow: inset 1px -5px 10px 0 #DDDDDD;
 }

@@ -7,7 +7,9 @@ L.Control.LevelPicker = L.Control.extend({
         position: 'bottomright',
         levelUpText: '+',
         levelDownText: '-',
-        maxHeight: '200px'
+        maxHeight: '200px',
+        selectedLevel: 1,
+        enableLevelList: true
     },
 
     initialize: function (options) {
@@ -21,7 +23,7 @@ L.Control.LevelPicker = L.Control.extend({
         var self = this;
 
         if (this._map.hasOwnProperty('level') || this._map.level == null){
-            this._map.level = 0;
+            this._map.level = this.options.selectedLevel;
         }
         var container = L.DomUtil.create('div', 'level-picker leaflet-bar');
         L.DomEvent.on(container, 'mousewheel', L.DomEvent.stopPropagation);
@@ -32,28 +34,32 @@ L.Control.LevelPicker = L.Control.extend({
         L.DomEvent.addListener(this.upButton, 'click', this.changeLevelUp, this);
 
         this.levelInfo = L.DomUtil.create('a', 'level-picker-level-info', container);
-        L.DomEvent.addListener(this.levelInfo, 'click', this.showLevelList, this);
+        if (this.options.enableLevelList){
+            L.DomUtil.addClass(this.levelInfo, 'enable-level-list');
+            L.DomEvent.addListener(this.levelInfo, '', this.showLevelList, this);
+        }
 
         this.downButton = L.DomUtil.create('a', 'level-picker-down', container);
         this.downButton.innerHTML = this.options.levelDownText;
         L.DomEvent.addListener(this.downButton, 'click', this.changeLevelDown, this);
 
-        this.levelListContainer = L.DomUtil.create('div', 'level-list leaflet-bar', container);
+        if (this.options.enableLevelList) {
+            this.levelListContainer = L.DomUtil.create('div', 'level-list leaflet-bar', container);
+            this.levelListButtonsContainer = L.DomUtil.create('div', 'pass', this.levelListContainer);
+            this.levelListButtonsContainer.setAttribute('style', "max-height: " + this.options.maxHeight + ";height:300px");
 
-        this.levelListButtonsContainer = L.DomUtil.create('div', 'pass', this.levelListContainer);
-        this.levelListButtonsContainer.setAttribute('style', "max-height: " + this.options.maxHeight + ";height:300px");
+            for (var i = this.options.levels.length; i > 0; i--) {
+                var btn = L.DomUtil.create('a', 'level-list-button', this.levelListButtonsContainer);
+                btn.innerHTML = this.options.levels[i - 1].level;
+                btn.setAttribute('data-value', i-1);
+                L.DomEvent.addListener(btn, 'click', function (a) {
+                    self.selectLevel(a.target.getAttribute('data-value'))
+                }, this);
+                this.levelListButtons.push(btn);
+            }
 
-        for (var i = this.options.levels.length; i > 0; i--){
-            var btn = L.DomUtil.create('a', 'level-list-button', this.levelListButtonsContainer);
-            btn.innerHTML = this.options.levels[i-1].level;
-            btn.setAttribute('data-value', i-1);
-            L.DomEvent.addListener(btn, 'click', function(a){
-                self.selectLevel(a.target.getAttribute('data-value'))
-            }, this);
-            this.levelListButtons.push(btn);
+            L.DomUtil.addClass(this.levelListButtons[this.levelListButtons.length - 1 - this._map.level], 'selected');
         }
-
-        L.DomUtil.addClass(this.levelListButtons[this.levelListButtons.length - 1 - this._map.level], 'selected');
 
         this.updateSelectedLevelInfo();
 
@@ -63,10 +69,13 @@ L.Control.LevelPicker = L.Control.extend({
         L.DomEvent.removeListener(this.upButton, 'click', this.changeLevelUp, this);
         L.DomEvent.removeListener(this.levelInfo, 'click', this.showLevelList, this);
         L.DomEvent.removeListener(this.downButton, 'click', this.changeLevelDown, this);
-        for (var i in this.levelListButtons){
-            L.DomEvent.removeListener(this.levelListButtons[i], 'click', function(a){
-                self.selectLevel(a.target.getAttribute('data-value'))
-            }, this);
+
+        if (this.options.enableLevelList) {
+            for (var i in this.levelListButtons) {
+                L.DomEvent.removeListener(this.levelListButtons[i], 'click', function (a) {
+                    self.selectLevel(a.target.getAttribute('data-value'))
+                }, this);
+            }
         }
     },
     /**
@@ -111,6 +120,8 @@ L.Control.LevelPicker = L.Control.extend({
      * Display or hide the level pick list
      */
     showLevelList: function(){
+        if (!this.options.enableLevelList) return;
+
         this.levelListShowing = !this.levelListShowing;
         if (this.levelListShowing){
             L.DomUtil.addClass(this.levelListContainer, 'show');
