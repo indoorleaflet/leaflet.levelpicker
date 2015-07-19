@@ -198,7 +198,7 @@ defaultMap.on('level.change', function(e) {
                         dragging: true
                     });
 
-                    new L.Control.LevelPicker({enableLevelList:true}).addTo(defaultMap);
+                    new L.Control.LevelPicker({levels:levels,enableLevelList:true}).addTo(defaultMap);
 
                     defaultMap.on('level.change', function(e) {
                         alert('Change to Level ' + levels[e.target.level].level);
