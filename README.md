@@ -57,10 +57,13 @@ var levels = [
         {level:'3', levelid: '001-3'}
     ];
 ```
+* selectedLevel: Default level of map (if none is already added)
 
 * position (optional): Follows standard leaflet position option. Defaults to topright.
 * levelUpText (optional): The text set on the level up button. Defaults to +.
 * levelDownText (optional): The text set on the level down button. Defaults to -.
+* enableLevelList (optional): If True then show the level list.
+* maxHeight (optional): Maximum height of level list
 
 ### Events
 This plugin casts the level.change event when the level is changed within the control.  You can access this level
