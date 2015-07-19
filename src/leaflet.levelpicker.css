@@ -5,7 +5,6 @@
 }
 
 .level-picker a{
-
     -webkit-box-shadow: inset 1px -5px 10px 0 #FFF;
     -moz-box-shadow: inset 1px -5px 10px 0 #FFF;
     box-shadow: inset 1px -5px 10px 0 #FFF;
@@ -14,7 +13,7 @@
     background:#FFF;
 }
 .level-picker a.level-picker-level-info.enable-level-list:hover{
-    background:#FFF;
+    background:#EEE;
 }
 
 .level-list-button.selected,
