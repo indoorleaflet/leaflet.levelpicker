@@ -1,7 +1,7 @@
 {
   "name": "leaflet.levelpicker",
   "description": "A level picker for leaflet.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/bmoregeo/leaflet.levelpicker",
   "author": {
     "name": "Christopher Fricke",
