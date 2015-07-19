@@ -60,7 +60,7 @@ L.Control.LevelPicker = L.Control.extend({
         if (this.options.enableLevelList) {
             this.levelListContainer = L.DomUtil.create('div', 'level-list leaflet-bar', container);
             this.levelListButtonsContainer = L.DomUtil.create('div', 'pass', this.levelListContainer);
-            this.levelListButtonsContainer.setAttribute('style', "max-height: " + this.options.maxHeight + ";height:300px");
+            this.levelListButtonsContainer.setAttribute('style', "max-height: " + this.options.maxHeight);
 
             for (var i = this.options.levels.length; i > 0; i--) {
                 var btn = L.DomUtil.create('a', 'level-list-button', this.levelListButtonsContainer);
