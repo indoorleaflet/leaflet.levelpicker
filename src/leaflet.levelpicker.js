@@ -66,9 +66,7 @@ L.Control.LevelPicker = L.Control.extend({
                 var btn = L.DomUtil.create('a', 'level-list-button', this.levelListButtonsContainer);
                 btn.innerHTML = this.options.levels[i - 1].level;
                 btn.setAttribute('data-value', i-1);
-                L.DomEvent.addListener(btn, 'click', function (a) {
-                    self.selectLevel(a.target.getAttribute('data-value'))
-                }, this);
+                L.DomEvent.addListener(btn, 'click', this.setLevelLevelList, this);
                 this.levelListButtons.push(btn);
             }
 
@@ -86,15 +84,14 @@ L.Control.LevelPicker = L.Control.extend({
      * @returns {div}
      */
     onRemove: function (map) {
+        var self = this;
         L.DomEvent.removeListener(this.upButton, 'click', this.changeLevelUp, this);
         L.DomEvent.removeListener(this.levelInfo, 'click', this.showLevelList, this);
         L.DomEvent.removeListener(this.downButton, 'click', this.changeLevelDown, this);
 
         if (this.options.enableLevelList) {
             for (var i in this.levelListButtons) {
-                L.DomEvent.removeListener(this.levelListButtons[i], 'click', function (a) {
-                    self.selectLevel(a.target.getAttribute('data-value'))
-                }, this);
+                L.DomEvent.removeListener(this.levelListButtons[i], 'click', this.setLevelLevelList, this);
             }
         }
     },
@@ -108,8 +105,9 @@ L.Control.LevelPicker = L.Control.extend({
             levelIndex === this._map.level){
             return;
         }
-        L.DomUtil.removeClass(this.levelListButtons[this.levelListButtons.length - 1 - this._map.level], 'selected');
-
+        if (this.options.enableLevelList){
+            L.DomUtil.removeClass(this.levelListButtons[this.levelListButtons.length - 1 - this._map.level], 'selected');
+        }
         this._map.level = levelIndex;
         this._map.fireEvent('level.change', this._map.level);
         this.updateSelectedLevelInfo();
@@ -133,14 +131,19 @@ L.Control.LevelPicker = L.Control.extend({
      * @param levelIndex
      */
     selectLevel: function(levelIndex){
-        this.changeLevel(parseInt(levelIndex));
+        this.changeLevel(parseInt(levelIndex, 10));
         this.showLevelList();
+    },
+    setLevelLevelList: function(event){
+        this.selectLevel(event.target.getAttribute('data-value'));
     },
     /**
      * Display or hide the level pick list
      */
     showLevelList: function(){
-        if (!this.options.enableLevelList) return;
+        if (!this.options.enableLevelList) {
+            return;
+        }
 
         this.levelListShowing = !this.levelListShowing;
         if (this.levelListShowing){

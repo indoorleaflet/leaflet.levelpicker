@@ -58,11 +58,7 @@
                         zoomControl: false,
                         dragging: true
                     });
-
-                    //new L.Control.LevelPicker({levels:levels, position:'bottomright'}).addTo(defaultMap);
-                    new L.Control.LevelPicker({levels:levels, position:'bottomleft'}).addTo(defaultMap);
-                    //new L.Control.LevelPicker({levels:levels, position:'topright'}).addTo(defaultMap);
-                    //new L.Control.LevelPicker({levels:levels, position:'topleft'}).addTo(defaultMap);
+                    new L.Control.LevelPicker({levels:levels, position:'bottomleft', enableLevelList:true}).addTo(defaultMap);
 
                     defaultMap.on('level.change', function(e) {
                         console.log('Change to Level ' + levels[e.target.level].level);
