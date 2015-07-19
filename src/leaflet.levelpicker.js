@@ -67,7 +67,7 @@ L.Control.LevelPicker = L.Control.extend({
                 btn.innerHTML = this.options.levels[i - 1].level;
                 btn.setAttribute('data-value', i-1);
                 L.DomEvent.addListener(btn, 'click', function (a) {
-                    self.selectLevel(a.target.getAttribute('data-value'))
+                    self.selectLevel(a.target.getAttribute('data-value'));
                 }, this);
                 this.levelListButtons.push(btn);
             }
@@ -86,6 +86,7 @@ L.Control.LevelPicker = L.Control.extend({
      * @returns {div}
      */
     onRemove: function (map) {
+        var self = this;
         L.DomEvent.removeListener(this.upButton, 'click', this.changeLevelUp, this);
         L.DomEvent.removeListener(this.levelInfo, 'click', this.showLevelList, this);
         L.DomEvent.removeListener(this.downButton, 'click', this.changeLevelDown, this);
@@ -93,7 +94,7 @@ L.Control.LevelPicker = L.Control.extend({
         if (this.options.enableLevelList) {
             for (var i in this.levelListButtons) {
                 L.DomEvent.removeListener(this.levelListButtons[i], 'click', function (a) {
-                    self.selectLevel(a.target.getAttribute('data-value'))
+                    self.selectLevel(a.target.getAttribute('data-value'));
                 }, this);
             }
         }
@@ -108,8 +109,9 @@ L.Control.LevelPicker = L.Control.extend({
             levelIndex === this._map.level){
             return;
         }
-        L.DomUtil.removeClass(this.levelListButtons[this.levelListButtons.length - 1 - this._map.level], 'selected');
-
+        if (this.options.enableLevelList){
+            L.DomUtil.removeClass(this.levelListButtons[this.levelListButtons.length - 1 - this._map.level], 'selected');
+        }
         this._map.level = levelIndex;
         this._map.fireEvent('level.change', this._map.level);
         this.updateSelectedLevelInfo();
@@ -133,14 +135,16 @@ L.Control.LevelPicker = L.Control.extend({
      * @param levelIndex
      */
     selectLevel: function(levelIndex){
-        this.changeLevel(parseInt(levelIndex));
+        this.changeLevel(parseInt(levelIndex, 10));
         this.showLevelList();
     },
     /**
      * Display or hide the level pick list
      */
     showLevelList: function(){
-        if (!this.options.enableLevelList) return;
+        if (!this.options.enableLevelList) {
+            return;
+        }
 
         this.levelListShowing = !this.levelListShowing;
         if (this.levelListShowing){
