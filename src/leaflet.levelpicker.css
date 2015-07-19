@@ -4,15 +4,63 @@
     text-indent: 1px;
 }
 
-.leaflet-bar span{
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
+.level-picker a{
+    -webkit-box-shadow: inset 1px -5px 10px 0 #FFF;
+    -moz-box-shadow: inset 1px -5px 10px 0 #FFF;
+    box-shadow: inset 1px -5px 10px 0 #FFF;
+}
+.level-picker a.level-picker-level-info:hover{
+    background:#FFF;
+}
+.level-picker a.level-picker-level-info.enable-level-list:hover{
+    background:#EEE;
+}
+
+.level-list-button.selected,
+.level-picker-level-info.selected{
+    background:#E5E5E5;
+    -webkit-box-shadow: inset 1px -5px 10px 0 #EEE;
+    -moz-box-shadow: inset 1px -5px 10px 0 #EEE;
+    box-shadow: inset 1px -5px 10px 0 #EEE;
+}
+.level-list-button.selected:hover,
+.level-picker-level-info.selected:hover{
+    background:#D5D5D5;
+    -webkit-box-shadow: inset 1px -5px 10px 0 #DDDDDD;
+    -moz-box-shadow: inset 1px -5px 10px 0 #DDDDDD;
+    box-shadow: inset 1px -5px 10px 0 #DDDDDD;
+}
+
+/** Level List **/
+.level-list{
+    position:absolute;
+    display:none;
+    overflow:auto;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+.level-list::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.level-list.show{
+    display:block;
+}
+.level-list-buttons{
+    padding-right:15px;
+    overflow: auto;
+}
+
+/** Position the Level List Popup **/
+.leaflet-right .level-list{
+    right:30px;
+}
+.leaflet-left .level-list{
+    left:30px;
+}
+.leaflet-top .level-list{
+    top:0;
+}
+.leaflet-bottom .level-list{
+    bottom:0;
 }

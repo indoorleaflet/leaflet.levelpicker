@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Examples using Leaflet Level Picker</title>
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="leaflet.levelpicker.css"/>
+
+    <style>
+        .map{
+            height: 500px;
+        }
+    </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <script src="leaflet.levelpicker.js"></script>
+    <script>
+        var zoom = 15;
+        var mapboxUrl= 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+        var coordinates = [39.2833, -76.6167];
+        var levels = [
+            {'levelid': '001-B1', 'level': 'B1'},
+            {'levelid': '001-01', 'level': '01'},
+            {'levelid': '001-02', 'level': '02'},
+            {'levelid': '001-03', 'level': '03'},
+            {'levelid': '001-04', 'level': '04'},
+            {'levelid': '001-05', 'level': '05'},
+            {'levelid': '001-06', 'level': '06'},
+            {'levelid': '001-07', 'level': '07'},
+            {'levelid': '001-08', 'level': '08'},
+            {'levelid': '001-09', 'level': '09'},
+            {'levelid': '001-10', 'level': '10'},
+            {'levelid': '001-11', 'level': '11'},
+            {'levelid': '001-12', 'level': '12'},
+            {'levelid': '001-13', 'level': '13'},
+            {'levelid': '001-14', 'level': '14'},
+            {'levelid': '001-15', 'level': '15'},
+            {'levelid': '001-16', 'level': '16'},
+            {'levelid': '001-17', 'level': '17'},
+            {'levelid': '001-18', 'level': '18'},
+            {'levelid': '001-19', 'level': '19'}
+        ];
+    </script>
+</head>
+<body>
+    <div class="starter-template main-container">
+        <div id="defaultMapContainer" class="container">
+            <header><h1>Default</h1></header>
+            <div class="row">
+                <div id="defaultMap" class="map col-md-12"></div>
+                <script>
+                    /** Default Map **/
+                    var defaultMap = L.map('defaultMap', {
+                        center: coordinates,
+                        zoom: zoom,
+                        layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                        zoomControl: false,
+                        dragging: true
+                    });
+
+                    //new L.Control.LevelPicker({levels:levels, position:'bottomright'}).addTo(defaultMap);
+                    new L.Control.LevelPicker({levels:levels, position:'bottomleft'}).addTo(defaultMap);
+                    //new L.Control.LevelPicker({levels:levels, position:'topright'}).addTo(defaultMap);
+                    //new L.Control.LevelPicker({levels:levels, position:'topleft'}).addTo(defaultMap);
+
+                    defaultMap.on('level.change', function(e) {
+                        console.log('Change to Level ' + levels[e.target.level].level);
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
