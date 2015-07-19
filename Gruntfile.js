@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -81,7 +80,7 @@ module.exports = function(grunt) {
     'gh-pages': {
       options: {
         base: 'examples',
-        repo: 'https://' + process.env.GH_TOKEN + '@github.com/bmoregeo/leaflet.levelpicker.git'
+        repo: 'https://' + process.env.GH_TOKEN + '@github.com/indoorleaflet/leaflet.levelpicker.git'
       },
       src: '**/*'
     },
@@ -106,7 +105,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-gh-pages');
-
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat', 'cssmin', 'uglify', 'bump']);

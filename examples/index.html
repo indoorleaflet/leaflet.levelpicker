@@ -50,7 +50,7 @@
             </div>
         </div>
     </nav>
-
+    <!-- Default -->
     <div class="starter-template main-container">
         <div id="defaultMapContainer" class="container">
             <header><h1>Default</h1></header>
@@ -90,6 +90,7 @@ defaultMap.on('level.change', function(e) {
             </div>
         </div>
 
+        <!-- Position Change -->
         <div id="positionMapContainer" class="container">
             <header><h1>Change Position</h1></header>
             <div class="row">
@@ -128,6 +129,7 @@ defaultMap.on('level.change', function(e) {
             </div>
         </div>
 
+        <!-- Button Name Change-->
         <div id="buttonNameMapContainer" class="container">
             <header><h1>Change Button Text</h1></header>
             <div class="row">
@@ -158,6 +160,45 @@ defaultMap.on('level.change', function(e) {
                     });
 
                     new L.Control.LevelPicker({levels:levels, levelUpText: 'U', levelDownText: 'D'}).addTo(defaultMap);
+
+                    defaultMap.on('level.change', function(e) {
+                        alert('Change to Level ' + levels[e.target.level].level);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <!-- Show Level List -->
+        <div id="showLevelList" class="container">
+            <header><h1>Show Level List</h1></header>
+            <div class="row">
+                <div class="col-md-6">
+                    <pre><code>var defaultMap = L.map('buttonNameMap', {
+                        center: coordinates,
+                        zoom: zoom,
+                        layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                        zoomControl: false,
+                        dragging: true
+                        });
+
+                        new L.Control.LevelPicker({enableLevelList:true}).addTo(defaultMap);
+
+                        defaultMap.on('level.change', function(e) {
+                        alert('Change to Level ' + levels[e.target.level].level);
+                        });</code></pre>
+                </div>
+                <div id="buttonNameMap" class="map col-md-6"></div>
+                <script>
+                    /** Default Map **/
+                    var defaultMap = L.map('buttonNameMap', {
+                        center: coordinates,
+                        zoom: zoom,
+                        layers: [L.tileLayer(mapboxUrl, {id: 'examples.map-20v6611k'})],
+                        zoomControl: false,
+                        dragging: true
+                    });
+
+                    new L.Control.LevelPicker({enableLevelList:true}).addTo(defaultMap);
 
                     defaultMap.on('level.change', function(e) {
                         alert('Change to Level ' + levels[e.target.level].level);

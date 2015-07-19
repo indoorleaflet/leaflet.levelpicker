@@ -9,7 +9,7 @@ L.Control.LevelPicker = L.Control.extend({
         levelDownText: '-',
         maxHeight: '200px',
         selectedLevel: 1,
-        enableLevelList: true
+        enableLevelList: false
     },
     /**
      * Fires on init of controller
